@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :integer          not null, primary key
+#  email         :string
+#  referral_code :string
+#  referrer_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'users_helper'
 
 class User < ActiveRecord::Base
@@ -51,6 +63,11 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    UserMailer.delay.signup_email(self)
+    # JDavis: Use 'deliver' to send emails 'inline' and not delayed or buffered.
+    #   If you expect heavy traffic, consider delaying emails to be sent by a seperate process (dyno).
+    UserMailer.signup_email(self).deliver  
+    
+    # JDavis: uncomment the line below if you want to buffer production emails
+    #Rails.env.production? ? UserMailer.delay.signup_email(self) : UserMailer.signup_email(self).deliver
   end
 end

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :integer          not null, primary key
+#  email         :string
+#  referral_code :string
+#  referrer_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'rails_helper'
 require 'securerandom'
 

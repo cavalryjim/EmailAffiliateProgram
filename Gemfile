@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
-ruby '2.3.3'
+ruby '2.3.0'
+# JDavis: adding gemset designation for RVM.  Ignore the following line if not using RVM.
+#ruby=2.3.0@email_affiliate_program
 
 gem 'activeadmin', '1.0.0.pre2'
 gem 'delayed_job_active_record', '~> 4.0.3'
@@ -8,6 +9,7 @@ gem 'devise'
 gem 'pg'
 gem 'rails', '4.2.5.2'
 gem 'unicorn'
+gem 'annotate', '2.6.8'
 
 
 # Gems used only for assets and not required
@@ -16,6 +18,11 @@ group :assets do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'sass-rails',   '~> 5.0.1'
   gem 'uglifier'
+end
+
+group :development do
+  gem 'annotate', '2.6.8'         # JDavis: puts the model schema in the model file.
+  gem 'letter_opener', '1.4.0'    # JDavis: view emails in your browser.
 end
 
 group :development, :test do

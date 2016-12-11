@@ -4,6 +4,8 @@ Prelaunchr::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  # JDavis: root_path should be the last of the named paths listed 
+  #  unless there is a good reason to put other paths below it.
   root :to => "users#new"
 
   post 'users/create' => 'users#create'

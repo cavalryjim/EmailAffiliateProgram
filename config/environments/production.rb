@@ -60,6 +60,18 @@ Prelaunchr::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # JDavis: configuring action_mailer to work with the email client.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {  
+    address:        'smtp.sendgrid.net',
+    port:           '587',
+    user_name:      ENV['SENDGRID_USERNAME'],
+    password:       ENV['SENDGRID_PASSWORD'],
+    domain:         'heroku.com',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  #config.action_mailer.default_url_options = { host: 'damagelist.com' }
   config.action_mailer.default_url_options = { :host => ENV['DEFAULT_MAILER_HOST'] }
 
   # Log the query plan for queries taking more than this (works
