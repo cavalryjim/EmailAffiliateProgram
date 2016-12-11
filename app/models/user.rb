@@ -64,10 +64,10 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     # JDavis: Use 'deliver' to send emails 'inline' and not delayed or buffered.
-    #   If you expect heavy traffic, consider delaying emails to be sent by a seperate process (dyno).
+    #   If you expect heavy traffic, consider delaying emails and sending by a seperate process (dyno).
     UserMailer.signup_email(self).deliver  
     
-    # JDavis: uncomment the line below if you want to buffer production emails
+    # JDavis: Delete my statement above and uncomment the line below if you want to buffer production emails.
     #Rails.env.production? ? UserMailer.delay.signup_email(self) : UserMailer.signup_email(self).deliver
   end
 end
