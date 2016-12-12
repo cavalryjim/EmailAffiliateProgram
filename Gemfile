@@ -9,7 +9,6 @@ gem 'devise'
 gem 'pg'
 gem 'rails', '4.2.5.2'
 gem 'unicorn'
-gem 'annotate', '2.6.8'
 
 
 # Gems used only for assets and not required
@@ -48,4 +47,5 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
+  gem 'gibbon'
 end

@@ -65,8 +65,10 @@ Prelaunchr::Application.configure do
   config.action_mailer.smtp_settings = {  
     address:        'smtp.sendgrid.net',
     port:           '587',
-    user_name:      ENV['SENDGRID_USERNAME'],
-    password:       ENV['SENDGRID_PASSWORD'],
+    user_name:      'ambici@ambicico.com',
+    #user_name:      ENV['SENDGRID_USERNAME'],
+    password:       'Marketing_3_6_0'
+    #password:       ENV['SENDGRID_PASSWORD'],
     domain:         'heroku.com',
     authentication: :plain,
     enable_starttls_auto: true

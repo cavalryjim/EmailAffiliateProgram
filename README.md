@@ -69,6 +69,20 @@ foreman start -f Procfile.dev
 View your website at the port default `http://localhost:5000/`.
 View sent mails at `http://localhost:1080/`.
 
+### MailChimp integration
+ 
+ If you want to push subscribers to MailChimp. Add the following keys to your `.env` file
+ 
+ LIST_ID=listID
+ MAILCHIMP_KEY=apiKey
+ 
+ Find your ListID [here](http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id)
+ Find your APIKey [here](http://kb.mailchimp.com/integrations/api-integrations/about-api-keys)
+ 
+ Users will then receive the subscribe to list email from MailChimp (You can modify it there), instead of the welcome email packaged with this application.
+ 
+ This integration adds a verified attribute to the `User` table. in order for the values to update you need to setup a [webhook](http://kb.mailchimp.com/integrations/api-integrations/how-to-set-up-webhooks) that points to `{root_url}/mailchimp/subscriber`, you only need to enable the subscription events.
+
 ### To create an admin account
 
 In Rails console, run this command. Be careful to not use the example admin user
